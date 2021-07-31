@@ -1,0 +1,7 @@
+Jenkin password
+---------------
+dd2082fbef374eb087d06dba6add2160
+
+to start jekins on specific port
+--------------
+1.java -jar jenkins.war --HttpPort=9090
