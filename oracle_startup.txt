@@ -1,0 +1,60 @@
+Comnmands for oracle
+
+1.ps -ef | grep pmon  ---> command to check whether DB is running or not
+2.lsnrctl status---> Listener status.  lsnrctl stop--> to stop
+3.sqlplus / as sysdba
+4.startup--> command to start DB
+
+
+show pdbs
+
+ALTER PLUGGABLE DATABASE MFSDB OPEN;
+
+alter session set container=mfsdb;
+
+desc dba_users;
+
+
+select username,account_status,expiry_date from dba_users;
+
+select username,account_status,expiry_date from dba_users where username='mfs_mt'
+
+
+alter user mfs_mt identified by password;(Password need to be provided)
+
+alter user mfs_mt account unlocked;
+
+
+
+
+Export and import dba_users
+
+Export command:-
+
+
+expdb username/password@servicename directory=data_pump_dir dumpfile-filename.dmp LOGFILE-file.log (Enrire DB)
+ 
+expdb username/password@servicename directory=data_pump_dir dumpfile-filename.dmp LOGFILE-file.log tables=table1,table2; (Particular table)
+
+
+Import command:-
+
+impdb username/password@servicename directory=data_pump_dir dumpfile-filename.dmp LOGFILE-file.log
+
+
+
+
+alter session set container=mfsdb; ---> command to select particular db when logged in sql mode
+select * from dba_directories;
+
+
+Creating schema:-
+
+
+create user test(username) identified by password;(Password need to be provided)
+
+grant connect,resource to username;  (All privileges)
+
+grant read,write on directory data_pump_dir to test (Read write privilege)
+
+drop user username casecade;
